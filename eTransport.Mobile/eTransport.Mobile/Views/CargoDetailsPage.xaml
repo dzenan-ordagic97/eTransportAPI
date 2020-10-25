@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="Cargo details" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModel="clr-namespace:eTransport.Mobile.ViewModels" xmlns:converters="clr-namespace:eTransport.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.CargoDetailsPage">
+    <ContentPage.BindingContext>
+        <viewModel:CargoDetailsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout>
+                <Frame CornerRadius="20"
+                                         Padding="0"
+                                         IsClippedToBounds="True">
+                    <Image Source="{Binding Image, Converter={StaticResource imgConv}}"></Image>
+                </Frame>
+                <Label Text="Cargo name"></Label>
+                <Entry x:Name="lblName" Text="{Binding Name}"  IsReadOnly="True"></Entry>
+                <Label Text="Cargo description"></Label>
+                <Entry x:Name="lblDescription" Text="{Binding Description}" IsReadOnly="True"></Entry>
+                <Label Text="Weight"></Label>
+                <Entry x:Name="lblWeight" Text="{Binding Weight}" IsReadOnly="True"></Entry>
+                <Label Text="Height"></Label>
+                <Entry x:Name="lblHeight" Text="{Binding Height}" IsReadOnly="True"></Entry>
+                <Label Text="Width"></Label>
+                <Entry x:Name="lblWidth" Text="{Binding Width}" IsReadOnly="True"></Entry>
+                <Button Clicked="btnUpdate_Clicked" x:Name="btnUpdate" BorderRadius="3"  TextColor="White"  BackgroundColor="#009688" Text="Update"></Button>
+                <Button  BorderRadius="3"  BackgroundColor="#009688"  TextColor="White"  x:Name="btnPicture" IsVisible="False" Text="Pick a photo"
+                 Clicked="Button_Clicked" />
+                <Button x:Name="btnSave" BorderRadius="3"  TextColor="White" Command="{Binding UpdateCommand}"   BackgroundColor="#009688" Text="Save" IsVisible="False"></Button>
+                <Button x:Name="btnDelete" BorderRadius="3"  TextColor="White" Command="{Binding DeleteCommand}"   BackgroundColor="#009688" Text="Delete"></Button>
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

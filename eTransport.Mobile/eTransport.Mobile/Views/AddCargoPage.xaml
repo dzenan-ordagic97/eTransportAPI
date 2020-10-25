@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:eTransport.Mobile.ViewModels" xmlns:converters="clr-namespace:eTransport.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.AddCargoPage"
+             Title="Add cargo">
+    <ContentPage.BindingContext>
+        <vm:AddCargoViewModel></vm:AddCargoViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="20" Margin="20">
+            <StackLayout Spacing="0">
+                <Label FontSize="30" Text="Cargo"/>
+            </StackLayout>
+            <StackLayout>
+                <Frame CornerRadius="20"
+                                       Padding="0"
+                                       IsClippedToBounds="True"
+                                       HasShadow="False">
+                    <Image Source="{Binding Image, Converter={StaticResource imgConv}}"></Image>
+                </Frame>
+                <Label Text="Name"></Label>
+                <Entry Placeholder="Name" Text="{Binding Name}" ></Entry>
+                <Label Text="Description"></Label>
+                <Entry Placeholder="Description" Text="{Binding Description}"></Entry>
+                <Label Text="Weight"></Label>
+                <Entry Placeholder="Weight" Text="{Binding Weight}"></Entry>
+                <Label Text="Height"></Label>
+                <Entry Placeholder="Height" Text="{Binding Height}"></Entry>
+                <Label Text="Width"></Label>
+                <Entry Placeholder="Width" Text="{Binding Width}"></Entry>
+                <Button BorderRadius="3" TextColor="White"  BackgroundColor="#009688" Text="Pick a photo"
+                 Clicked="Button_Clicked" />
+                <Button BorderRadius="3" TextColor="White"  BackgroundColor="#009688" Command="{Binding SaveCommand}" Margin="0,0,0,0" Text="Save"></Button>
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

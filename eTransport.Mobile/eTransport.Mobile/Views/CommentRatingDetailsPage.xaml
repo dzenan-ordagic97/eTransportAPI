@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="Ratings" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModel="clr-namespace:eTransport.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.CommentRatingDetailsPage">
+    <ContentPage.BindingContext>
+        <viewModel:CommentRatingsDetailsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <RefreshView>
+            <StackLayout>
+                <Label Padding="10" Text="All comments and ratings"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+                <ListView ItemsSource="{Binding CommentRatingList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout  Padding="20" >
+                                    <StackLayout  Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Rating" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                            <Label Text="{Binding Rating}"></Label>
+                                        </StackLayout>
+                                        <Label  Text="Comment" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                        <Label Text="{Binding Comment}"></Label>
+                                        <Label  Text="Carrier" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                        <Label  Text="{Binding Freight.Carrier.CarrierName}"></Label>
+                                        <Label Text="Transport date" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                        <Label Text="{Binding Freight.TransportDate}"></Label>
+                                    </StackLayout>
+                                  
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

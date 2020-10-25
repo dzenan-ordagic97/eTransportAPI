@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModels="clr-namespace:eTransport.Mobile.ViewModels" xmlns:converters="clr-namespace:eTransport.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.HomePage" Title="Home"
+             >
+    <ContentPage.BindingContext>
+        <viewModels:HomeViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Button IsVisible="True" x:Name="btnBest" Clicked="Button_Clicked" BorderRadius="3"  TextColor="White"  BackgroundColor="#009688" Text="Show best carriers"></Button>
+            <Button IsVisible="False" x:Name="btnAll" Clicked="btnAll_Clicked" BorderRadius="3"  TextColor="White"  BackgroundColor="#009688" Text="Show all carriers"></Button>
+
+            <StackLayout x:Name="CarriersAllLayout" IsVisible="True">
+                <Label TextColor="#009688" Margin="0, 20,0,0" Text="All carriers" FontAttributes="Bold" FontSize="17" HorizontalOptions="CenterAndExpand"></Label>
+                <Label x:Name="errorLabel" Text="No available carriers!" TextColor="Red" FontSize="15" IsVisible="false" HorizontalOptions="CenterAndExpand"></Label>
+                <ListView IsVisible="True" ItemSelected="ListView_ItemSelected" ItemsSource="{Binding CarrierList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="50, 20, 50, 20">
+                                    <Frame CornerRadius="20"
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                                        <Image Source="{Binding Image, Converter={StaticResource imgConv}}"></Image>
+                                    </Frame>
+                                    <Label Text="Carrier name" LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16"></Label>
+                                    <Label Text="{Binding CarrierName}"></Label>
+                                    <Label Text="Business number" LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16"></Label>
+                                    <Label Text="{Binding BusinessNumber}" ></Label>
+                                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Rating" LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" ></Label>
+                                    <Label  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding Rating}" ></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            
+            <StackLayout x:Name="BestCarrierLayout" IsVisible="False">
+                <Label TextColor="#009688" Margin="0, 20,0,0" Text="Best carriers recommendation for you (ML.net)" FontAttributes="Bold" FontSize="17" HorizontalOptions="CenterAndExpand"></Label>
+                <ListView ItemSelected="ListView_ItemSelected" ItemsSource="{Binding RecommendedList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="50, 20, 50, 20">
+                                    <Frame CornerRadius="20"
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                                        <Image Source="{Binding Image, Converter={StaticResource imgConv}}"></Image>
+                                    </Frame>
+                                    <Label Text="Carrier name" LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16"></Label>
+                                    <Label Text="{Binding CarrierName}"></Label>
+                                    <Label Text="Business number" LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16"></Label>
+                                    <Label Text="{Binding BusinessNumber}" ></Label>
+                                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Rating" LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" ></Label>
+                                    <Label  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding Rating}" ></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

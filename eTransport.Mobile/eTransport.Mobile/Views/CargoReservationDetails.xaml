@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModel="clr-namespace:eTransport.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.CargoReservationDetails" Title="Reservation details">
+    <ContentPage.BindingContext>
+        <viewModel:CargoReservationDetailsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout Spacing="0">
+                <Label FontAttributes="Bold" FontSize="17" Text="Reservation details"/>
+            </StackLayout>
+            <StackLayout Spacing="0">
+                <Button x:Name="SendButton" BackgroundColor="#009688" Command="{Binding SendMessageCommand}" TextColor="White" Text="Send message"></Button>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Start location"></Label>
+                <Entry Text="{Binding StartLocation}"  IsReadOnly="True"></Entry>
+                <Label Text="End location"></Label>
+                <Entry Text="{Binding EndLocation}" IsReadOnly="True"></Entry>
+                <Label Text="Start date transport"></Label>
+                <DatePicker Date="{Binding StartDateTransport}" IsEnabled="False"></DatePicker>
+                <Label Text="End date transport"></Label>
+                <DatePicker Date="{Binding EndDateTransport}" IsEnabled="False"></DatePicker>
+                <Label Text="Cargo"></Label>
+                <Entry Text="{Binding Cargo}" IsReadOnly="True"></Entry>
+                <Label Text="Carrier"></Label>
+                <Entry Text="{Binding Carrier}" IsReadOnly="True"></Entry>
+                <Label Text="Extra services"></Label>
+                <Entry Text="{Binding ExtraServices}" IsReadOnly="True"></Entry>
+            </StackLayout>
+            <Button BorderRadius="3"  Command="{Binding CancelCommand}" TextColor="White"   BackgroundColor="#009688" Text="Cancel reservation"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

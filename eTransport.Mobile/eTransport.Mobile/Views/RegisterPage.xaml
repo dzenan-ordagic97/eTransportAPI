@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="Register" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:eTransport.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.RegisterPage">
+    <ContentPage.BindingContext>
+        <vm:RegisterViewModel></vm:RegisterViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <StackLayout Spacing="0">
+                    <Label FontSize="30" Text="eTransport"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Email"></Label>
+                    <Entry Placeholder="Email" Text="{Binding Email}" ></Entry>
+                    <Label Text="Password"></Label>
+                    <Entry Placeholder="Password" Text="{Binding Password}"  IsPassword="True"></Entry>
+                    <Label Text="First name"></Label>
+                    <Entry Placeholder="First name" Text="{Binding FirstName}"></Entry>
+                    <Label Text="Last name"></Label>
+                    <Entry Placeholder="Last name" Text="{Binding LastName}"></Entry>
+                    <Label Text="JMBG"></Label>
+                    <Entry Placeholder="JMBG" Text="{Binding JMBG}"></Entry>
+                    <Label Text="Gender"></Label>
+                    <Entry Placeholder="Gender" Text="{Binding Gender}"></Entry>
+                    <Label Text="Date of birth"></Label>
+                    <DatePicker Date="{Binding DateOfBirth}" MaximumDate="01/01/2020"></DatePicker>
+                    <Picker x:Name="pickerCountry" Title="Country"
+                        ItemsSource="{Binding Countries}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedCountry}"
+                        SelectedIndexChanged="pickerCountry_SelectedIndexChanged"></Picker>
+                    <Picker x:Name="pickerCity" Title="City"
+                        ItemsSource="{Binding Cities}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedCity}"
+                        ></Picker>
+                    <Label Text="Address"></Label>
+                    <Entry Placeholder="Address" Text="{Binding AddressName}"></Entry>
+                    <Button Command="{Binding RegisterCommand}" Margin="0,0,0,0" Text="Register"></Button>
+                    <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

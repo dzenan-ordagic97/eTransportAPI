@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage BackgroundColor="#009688" Title="Login" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModels="clr-namespace:eTransport.Mobile.ViewModels" xmlns:converters="clr-namespace:eTransport.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.LoginPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <viewModels:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0"  Padding="20">
+            <Label FontSize="30" Text="eTransport"/>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Entry Placeholder="E-mail" Text="{Binding Email}"></Entry>
+                <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True"></Entry>
+                <Button BorderRadius="3" Command="{Binding LoginCommand}" 
+                        Text="Login"
+                        FontAttributes="Bold"
+                        CornerRadius="5"
+                        ></Button>
+
+
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+            </StackLayout>
+            <StackLayout 
+                         HorizontalOptions="Center"
+                         Orientation="Horizontal"
+                         Padding="0,0,0,30">
+                <Label Text="You are not logged?"></Label>
+                <Label  TextColor="Blue" Text="Create your profile!">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoRegisterPageCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

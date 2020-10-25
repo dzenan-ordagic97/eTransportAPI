@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataFreights" targetNamespace="http://tempuri.org/DataFreights.xsd" xmlns:mstns="http://tempuri.org/DataFreights.xsd" xmlns="http://tempuri.org/DataFreights.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataFreights" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataFreights" msprop:Generator_UserDSName="DataFreights">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblAllFreights" msprop:Generator_TableClassName="tblAllFreightsDataTable" msprop:Generator_TableVarName="tabletblAllFreights" msprop:Generator_RowChangedName="tblAllFreightsRowChanged" msprop:Generator_TablePropName="tblAllFreights" msprop:Generator_RowDeletingName="tblAllFreightsRowDeleting" msprop:Generator_RowChangingName="tblAllFreightsRowChanging" msprop:Generator_RowEvHandlerName="tblAllFreightsRowChangeEventHandler" msprop:Generator_RowDeletedName="tblAllFreightsRowDeleted" msprop:Generator_RowClassName="tblAllFreightsRow" msprop:Generator_UserTableName="tblAllFreights" msprop:Generator_RowEvArgName="tblAllFreightsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Rb" msprop:Generator_ColumnVarNameInTable="columnRb" msprop:Generator_ColumnPropNameInRow="Rb" msprop:Generator_ColumnPropNameInTable="RbColumn" msprop:Generator_UserColumnName="Rb" type="xs:int" minOccurs="0" />
+              <xs:element name="StartLocation" msprop:Generator_ColumnVarNameInTable="columnStartLocation" msprop:Generator_ColumnPropNameInRow="StartLocation" msprop:Generator_ColumnPropNameInTable="StartLocationColumn" msprop:Generator_UserColumnName="StartLocation" type="xs:string" minOccurs="0" />
+              <xs:element name="EndLocation" msprop:Generator_ColumnVarNameInTable="columnEndLocation" msprop:Generator_ColumnPropNameInRow="EndLocation" msprop:Generator_ColumnPropNameInTable="EndLocationColumn" msprop:Generator_UserColumnName="EndLocation" type="xs:string" minOccurs="0" />
+              <xs:element name="TransportDate" msprop:Generator_ColumnVarNameInTable="columnTransportDate" msprop:Generator_ColumnPropNameInRow="TransportDate" msprop:Generator_ColumnPropNameInTable="TransportDateColumn" msprop:Generator_UserColumnName="TransportDate" type="xs:string" minOccurs="0" />
+              <xs:element name="Client" msprop:Generator_ColumnVarNameInTable="columnClient" msprop:Generator_ColumnPropNameInRow="Client" msprop:Generator_ColumnPropNameInTable="ClientColumn" msprop:Generator_UserColumnName="Client" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

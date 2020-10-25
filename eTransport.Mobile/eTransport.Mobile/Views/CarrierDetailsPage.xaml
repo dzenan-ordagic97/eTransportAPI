@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModel="clr-namespace:eTransport.Mobile.ViewModels" xmlns:converters="clr-namespace:eTransport.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.CarrierDetailsPage" Title="Carrier details">
+    <ContentPage.BindingContext>
+        <viewModel:CarrierDetailsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+            <StackLayout Padding="10">
+            <StackLayout>
+                <StackLayout Padding="50, 20, 50, 20">
+                    <Frame CornerRadius="20"
+                                       Padding="0"
+                                       IsClippedToBounds="True">
+                        <Image Source="{Binding Image, Converter={StaticResource imgConv}}"></Image>
+                    </Frame>
+                </StackLayout>
+                <Label Text="Carrier name"></Label>
+                <Entry Text="{Binding CarrierName}"  IsReadOnly="True"></Entry>
+                <Label Text="Carrier business mail"></Label>
+                <Entry Text="{Binding CarrierBusinessMail}" IsReadOnly="True"></Entry>
+                <Label Text="Carrier business number"></Label>
+                <Entry Text="{Binding CarrierBusinessNumber}" IsReadOnly="True"></Entry>
+                <Label Text="Startup price"></Label>
+                <Entry Text="{Binding StartupPrice}" IsReadOnly="True"></Entry>
+            </StackLayout>
+            <Button BorderRadius="3"  Command="{Binding SendMessageCommand}" TextColor="White"   BackgroundColor="#009688" Text="Send message"></Button>
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+            <Label Text="All available extra services!" FontSize="20"></Label>
+            <Label x:Name="errorLabel" Text="No available active extra services!" TextColor="Red" FontSize="15" IsVisible="false" HorizontalOptions="CenterAndExpand"></Label>
+            <ListView  ItemsSource="{Binding ExtraServicesList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="50, 20, 50, 20" >
+                                <Label Text="Extra service name" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding Name}"></Label>
+                                <Label Text="Price" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding Price}"></Label>
+                                <Label Text="Description" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding Description}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button BorderRadius="3"  Command="{Binding CargoReservationCommand}" TextColor="White"   BackgroundColor="#009688" Text="Select this carrier"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

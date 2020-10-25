@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModels="clr-namespace:eTransport.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.ProfilePage">
+    <ContentPage.BindingContext>
+        <viewModels:ProfileVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout Spacing="0">
+                <Label FontSize="30" Text="Profile"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="First name"></Label>
+                <Frame x:Name="MainFrameName" OutlineColor="Black">
+                    <Frame Padding="0" HorizontalOptions="Center" x:Name="FrameName">
+                        <Label  HorizontalOptions="FillAndExpand" Text="{Binding FirstName}" FontSize="20"></Label>
+                    </Frame>
+                </Frame>
+                <Entry  x:Name="FirstName" Text="{Binding FirstName}"  IsVisible="False"></Entry>
+                <Label  Text="Last name"></Label>
+                <Frame x:Name="MainFrameLast" OutlineColor="Black">
+                    <Frame x:Name="FrameLast"  Padding="0" HorizontalOptions="Center" >
+                        <Label HorizontalOptions="FillAndExpand" Text="{Binding LastName}" FontSize="20"></Label>
+                    </Frame>
+                </Frame>
+                <Entry x:Name="LastName" Text="{Binding LastName}" IsVisible="False"></Entry>
+                <Label Text="Date of birth"></Label>
+                <Frame x:Name="MainFrameDate" OutlineColor="Black">
+                    <Frame x:Name="FrameDate"  Padding="0" HorizontalOptions="Center"  >
+                        <Label HorizontalOptions="FillAndExpand" Text="{Binding DateOfBirth.Date}" FontSize="20"></Label>
+                    </Frame>
+                </Frame>
+                <DatePicker Date="{Binding DateOfBirth}" MaximumDate="01/01/2020"  x:Name="DateOfBirth" IsVisible="False"></DatePicker>
+                <Label Text="Gender"></Label>
+                <Frame x:Name="MainFrameGender" OutlineColor="Black">
+                    <Frame x:Name="FrameGender"  Padding="0" HorizontalOptions="Center" >
+                        <Label HorizontalOptions="FillAndExpand" Text="{Binding Gender}" FontSize="20"></Label>
+                    </Frame>
+                </Frame>
+                <Entry x:Name="Gender" Text="{Binding Gender}"  IsVisible="False"></Entry>
+                <Label Text="JMBG"></Label>
+                <Frame x:Name="MainFrameJMBG" OutlineColor="Black">
+                    <Frame x:Name="FrameJMBG" Padding="0" HorizontalOptions="Center" >
+                        <Label HorizontalOptions="FillAndExpand" Text="{Binding JMBG}" FontSize="20"></Label>
+                    </Frame>
+                </Frame>
+                <Entry x:Name="JMBG" Text="{Binding JMBG}" IsVisible="False"></Entry>
+                <Button BorderRadius="3" TextColor="White"  BackgroundColor="#009688"  x:Name="Update"  Margin="0,0,0,0" Text="Update" Clicked="Button_Clicked" IsEnabled="true"></Button>
+                <Button BorderRadius="3" TextColor="White"  BackgroundColor="#009688"  x:Name="Save"  Clicked="Save_Clicked" Margin="0,0,0,0" Text="Save" IsVisible="false"></Button>
+                <Button BorderRadius="3" TextColor="White"  BackgroundColor="#009688"  x:Name="Back"  Clicked="Back_Clicked"  Margin="0,0,0,0" Text="Back" IsVisible="false"></Button>
+                <Button BorderRadius="3" TextColor="White"  BackgroundColor="#009688"   x:Name="Logout" Text="Logout" Command="{Binding LogoutCommand}" ></Button>
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

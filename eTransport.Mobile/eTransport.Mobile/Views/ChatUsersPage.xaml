@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.ChatUsersPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<Button Command="{Binding AddCommand}" TextColor="White" BorderRadius="3"  BackgroundColor="#009688" Text="Add cargo"></Button>-->
+            <!--<Label Padding="10" Text="Direct messages"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <ListView x:Name="listView"  ItemsSource="{Binding CargoList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="50, 20, 50, 20" >
+                                <Label Text="User" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding Name}"></Label>
+                                <Label Text="Cargo description" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding Description}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

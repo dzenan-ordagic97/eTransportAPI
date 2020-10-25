@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:eTransport.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.AddSpecificCargoReservationPage" Title="Add cargo reservation (specific)">
+    <ContentPage.BindingContext>
+        <vm:AddCargoReservationSpecificViewModel></vm:AddCargoReservationSpecificViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="20" Margin="20">
+            <StackLayout Spacing="0">
+                <Label  FontSize="30" Text="Cargo reservation"/>
+            </StackLayout>
+            <StackLayout Spacing="0">
+                <Button x:Name="SendButton" BackgroundColor="#009688" Command="{Binding SendMessageCommand}" TextColor="White" Text="Send message"></Button>
+            </StackLayout>
+            <StackLayout>
+                <Picker x:Name="pickerCountry" Title="Country"
+                        ItemsSource="{Binding Countries}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedCountry}"
+                        SelectedIndexChanged="pickerCountry_SelectedIndexChanged"></Picker>
+                <Picker x:Name="pickerCityStart" Title="Start location"
+                        ItemsSource="{Binding CitiesStart}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedCityStart}"
+                        ></Picker>
+                <Picker x:Name="pickerCityEnd" Title="End location"
+                        ItemsSource="{Binding CitiesEnd}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedCityEnd}"
+                        ></Picker>
+                <!--<Label Text="Start location"></Label>
+                <Entry Placeholder="Start location" Text="{Binding StartLocation}"></Entry>
+                <Label Text="End location"></Label>
+                <Entry Placeholder="End location" Text="{Binding EndLocation}"></Entry>-->
+                <Label Text="Start date transport"></Label>
+                <DatePicker Date="{Binding StartDateTransport}" MinimumDate="01-01-2020"></DatePicker>
+                <Label Text="End date transport"></Label>
+                <DatePicker Date="{Binding EndDateTransport}" MinimumDate="01-01-2020" MaximumDate="01-01-2021"></DatePicker>
+                <Picker x:Name="pickerCargo" Title="Cargo"
+                        ItemsSource="{Binding Cargos}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedCargo}"
+                        ></Picker>
+                <Picker x:Name="pickerCarrier"  Title="Carrier"
+                        ItemsSource="{Binding Carriers}"
+                        ItemDisplayBinding="{Binding CarrierName}"
+                        SelectedItem="{Binding SelectedCarrier}"
+                        SelectedIndexChanged="pickerCarrier_SelectedIndexChanged"
+                        ></Picker>
+                <Picker x:Name="pickerExtraServices"  Title="Extra services (optional)"
+                        ItemsSource="{Binding ExtraServices}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedExtraServices}"
+                        ></Picker>
+                <Button BorderRadius="3" TextColor="White"  BackgroundColor="#009688"   Command="{Binding CargoReservationCommand}" Margin="0,0,0,0" Text="Save"></Button>
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

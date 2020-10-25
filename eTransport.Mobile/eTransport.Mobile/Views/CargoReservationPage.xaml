@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModel="clr-namespace:eTransport.Mobile.ViewModels" xmlns:converters="clr-namespace:eTransport.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.CargoReservationPage" Title="Cargo reservation">
+    <ContentPage.BindingContext>
+        <viewModel:CargoReservationViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <RefreshView>
+            <StackLayout>
+                <Button BorderRadius="3"  TextColor="White" Command="{Binding AddCommand}"   BackgroundColor="#009688" Text="Add cargo reservation globally (Global)"></Button>
+                <Button BorderRadius="3"  Command="{Binding AddSpecificCommand}" TextColor="White"   BackgroundColor="#009688" Text="Add cargo reservation for carrier (Specific)"></Button>
+                <Button BorderRadius="3"  Command="{Binding ShowAcceptedCommand}" TextColor="White"   BackgroundColor="#009688" Text="Accept prices (Carrier price)"></Button>
+                <Label Padding="10" Text="Active reservations"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+                <Label x:Name="errorLabel" Text="No available active reservations!" TextColor="Red" FontSize="15" IsVisible="false" HorizontalOptions="CenterAndExpand"></Label>
+                
+                <ListView ItemSelected="ListView_ItemSelected" ItemsSource="{Binding CargoReservationList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="50, 20, 50, 20" >
+                                    <Label Text="Start location" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                    <Label Text="{Binding StartLocation}"></Label>
+                                    <Label Text="End location" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                    <Label Text="{Binding EndLocation}"></Label>
+                                    <Label Text="Start date transport" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                    <Label Text="{Binding StartDateTransport}"></Label>
+                                    <Label Text="End date transport" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                    <Label Text="{Binding EndDateTransport}"></Label>
+                                    <Label Text="Reservation type" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                    <Label TextColor="#009688" Text="{Binding Freight.Carrier.CarrierName}"></Label>
+                                    <Label Text="Carrier accepted" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                    <Label TextColor="#009688" Text="{Binding Accepted}"></Label>
+                                    <Label Text="Carrier price" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                    <Label TextColor="#009688" Text="{Binding Freight.ClientAcceptedString}"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

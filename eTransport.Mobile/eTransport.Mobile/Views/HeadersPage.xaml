@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:eTransport.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.HeadersPage">
+    <ContentPage.BindingContext>
+        <viewModel:HeadersViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <RefreshView>
+            <StackLayout>
+                <StackLayout Spacing="0">
+                    <Label  FontSize="30" Text="Chat history"/>
+                </StackLayout>
+                <ListView ItemSelected="listView_ItemSelected" x:Name="listView" ItemsSource="{Binding HeadersList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="50, 20, 50, 20" >
+                                    <Label Text="{Binding Username}" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16" ></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="Rate the carrier" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:eTransport.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.AddCommentRatingPage">
+    <ContentPage.BindingContext>
+        <vm:AddCommentRatingViewModel></vm:AddCommentRatingViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="20" Margin="20">
+            <StackLayout Spacing="0">
+                <Label  FontSize="30" Text="Ratings"/>
+            </StackLayout>
+            <StackLayout>
+                <Label  Text="Comment"></Label>
+                <Entry Placeholder="Comment" Text="{Binding Comment}"></Entry>
+                <Label  Text="Rating (min 1, max 5)"></Label>
+                <Entry Placeholder="Rating" Text="{Binding Rating}"></Entry>
+                <Picker x:Name="pickerCargoReservations" Title="Carrier"
+                        ItemsSource="{Binding CargoReservations}"
+                        ItemDisplayBinding="{Binding Freight.Carrier.CarrierName}"
+                        SelectedItem="{Binding SelectedCargo}"
+                        ></Picker>
+                <Button BorderRadius="3" TextColor="White"  BackgroundColor="#009688"   Command="{Binding CargoReservationCommand}" Margin="0,0,0,0" Text="Save"></Button>
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="Stripe.net payment"  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewModel="clr-namespace:eTransport.Mobile.ViewModels"
+              mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.PaymentPage"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.BindingContext>
+        <viewModel:PaymentViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="20" Margin="20" >
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Freight was completed by:"></Label>
+                <Label Text="{Binding CarrierName }"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Distance:"></Label>
+                <Label Text="{Binding Distance}"></Label>
+                <Label Text="Price: "></Label>
+                <Label Text="{Binding FullPrice}"></Label>
+            </StackLayout>
+            <StackLayout Margin="50, 20, 50, 0">
+                <StackLayout>
+                    <Entry Text="{Binding CreditCardNumber}" Placeholder="Enter your credit card number"></Entry>
+                    <StackLayout Orientation="Horizontal">
+                        <Entry Text="{Binding ExpiryYear}" Placeholder="Year"></Entry>
+                        <Entry Text="{Binding ExpiryMonth}" Placeholder="Month"></Entry>
+                        <Entry Text="{Binding CVC}" Placeholder="CVC"></Entry>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <Button BorderRadius="3" TextColor="White"  BackgroundColor="#009688"   Command="{Binding PayCommand}" Margin="80,20,80,0" Text="Pay"></Button>
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:eTransport.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eTransport.Mobile.Views.AcceptedReservationsPage" Title="Accepted reservations by carriers">
+    <ContentPage.BindingContext>
+        <vm:AcceptedReservationsViewModel></vm:AcceptedReservationsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="errorLabel" Text="No available reservations!" TextColor="Red" FontSize="15" IsVisible="false" HorizontalOptions="CenterAndExpand"></Label>
+            <ListView ItemSelected="ListView_ItemSelected" ItemsSource="{Binding CargoReservationList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="50, 20, 50, 20" >
+                                <Label Text="Start location" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding StartLocation}"></Label>
+                                <Label Text="End location" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding EndLocation}"></Label>
+                                <Label Text="Start date transport" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding StartDateTransport}"></Label>
+                                <Label Text="End date transport" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding EndDateTransport}"></Label>
+                                <Label Text="Carrier" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding Freight.Carrier.CarrierName}"></Label>
+                                <Label Text="Full price" LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"></Label>
+                                <Label Text="{Binding Freight.Price}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
